@@ -29,10 +29,10 @@ func keren(nums ...int){
 
 func main(){
 	keren(1,2,4,16)
-	keren(1,6,1,8)
+	keren(1,6,1,8) // btw pake ini ternyata cmn stack, otomatis input ke function itu lebih terbatas
 	keren(1)
-	keren([]int{1,3,1,7,1,18,18}...)
+	keren([]int{1,3,1,7,1,18,18}...) //menariiknya ini batasnya bisa gede banget pake slice, karena ukuran slice itu berdasarkan heap? yang disimpan ke stack cuan pointer ke heap doang? 
 }
-
+// dan menariknya lets say kita buat variable dmn isinya itu slice itu, nah misal  kkita pake ... , itu slice duplicate yg beda dgn slice sebelumnya ya . kalau dirubah gabakalan pengaruh ke slice yang sebelumnya.
 // just so i remember, you can run right away using go run {filename}.go
 // or build first like go build {filename}.go after that executing using either {filename}.exe or ./{filename} for linux & mac
