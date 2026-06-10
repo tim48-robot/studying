@@ -46,9 +46,80 @@ func interfaceGeo(g geometry){
 	}
 }
 
+// func main(){
+// 	c1 := circle{8}
+// 	r1 := rect{10, 5}
+// 	interfaceGeo(c1)
+// 	interfaceGeo(r1)
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+type Notifier interface {
+	send(string) 
+}
+
+type EmailNotifier struct {
+	message string
+}
+
+type SMSNotifier struct {
+	message string
+}
+
+type UserService struct {
+	notifier Notifier
+}
+
+
+func (en EmailNotifier) send(message string) {
+	fmt.Println("Email sent: " + message)
+}
+
+func (sn SMSNotifier) send(message string){
+	fmt.Println("SMS sent: " + message)
+}
+
+
+func NewUserService(n Notifier) UserService {
+	return UserService{notifier: n}
+}
+
+func (us UserService) Register(username string) {
+	us.notifier.send("Welcome, " + username)
+}
+
 func main(){
-	c1 := circle{8}
-	r1 := rect{10, 5}
-	interfaceGeo(c1)
-	interfaceGeo(r1)
+	smsnot := SMSNotifier{}
+	emailnot := EmailNotifier{}
+	NewUserService(smsnot).Register("Budi")
+	NewUserService(emailnot).Register("Budi")
 }
