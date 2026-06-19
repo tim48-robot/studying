@@ -51,3 +51,9 @@ func main(){
 		fmt.Printf("This is not an argError")
 	}
 }
+
+
+
+
+
+/// VERY INTERESTING
